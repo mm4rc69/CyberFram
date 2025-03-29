@@ -5,9 +5,15 @@ sql_statements = [
     """CREATE TABLE IF NOT EXISTS controls (
             ctrlId INTEGER PRIMARY KEY, 
             ctrlName TEXT NOT NULL,
+            ctrDomain TEXT NOT NULL,
             ctrlDescription TEXT NOT NULL, 
             ctrlCreationdate DATE, 
-            ctrlHowtomeet TEXT         
+            ctrlHowtomeet TEXT,
+            FOREIGN KEY (ctrDomain) REFERENCES domains (domId)     
+        );""",
+    """CREATE TABLE IF NOT EXISTS domains (
+            domId INTEGER PRIMARY KEY, 
+            domName TEXT NOT NULL      
         );""",
     """CREATE TABLE IF NOT EXISTS simctrl (
             simctrlId INTEGER PRIMARY KEY, 
